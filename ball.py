@@ -17,4 +17,6 @@ class Ball(Turtle):
         self.setheading(initial_heading)
 
     def move(self):
-        self.forward(MOVE_INCREMENT)
+        self.setx(self.xcor()+MOVE_INCREMENT)
+        self.sety(self.ycor()+MOVE_INCREMENT)
+        # self.forward(MOVE_INCREMENT)

@@ -1,6 +1,7 @@
 from turtle import Screen
 import time
 import game_parameters as gp
+import game_engine as ge
 from paddle import Paddle
 from ball import Ball
 
@@ -37,6 +38,9 @@ screen.update()
 game_running = True
 while game_running:
     ball.move()
+
+    ge.detect_wall_collision(ball.ycor())
+
     screen.update()
     time.sleep(0.1)
 
