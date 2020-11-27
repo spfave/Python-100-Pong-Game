@@ -1,6 +1,8 @@
 from turtle import Screen
+import time
 import game_parameters as gp
 from paddle import Paddle
+from ball import Ball
 
 
 # Functions
@@ -21,6 +23,7 @@ screen = game_screen()
 
 player1_paddle = Paddle(start_coords=gp.PLAYER1_START_POSITION)
 player2_paddle = Paddle(start_coords=gp.PLAYER2_START_POSITION)
+ball = Ball(45)
 
 screen.listen()
 screen.onkey(key="Up", fun=player1_paddle.move_up)
@@ -33,6 +36,8 @@ screen.update()
 # Run game
 game_running = True
 while game_running:
+    ball.move()
     screen.update()
+    time.sleep(0.1)
 
 screen.exitonclick()

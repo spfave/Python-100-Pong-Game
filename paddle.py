@@ -9,7 +9,7 @@ MOVE_INCREMENT = 20
 
 # Classes
 class Paddle(Turtle):
-    """ docstring """
+    """ Moveable paddle """
 
     def __init__(self, start_coords):
         super().__init__()
