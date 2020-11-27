@@ -4,7 +4,6 @@ from turtle import Turtle
 # Constants
 PADDLE_WIDTH = 20
 PADDLE_HEIGHT = 100
-PADDLE_START_POSITION = (350, 0)
 MOVE_INCREMENT = 20
 
 
@@ -12,13 +11,13 @@ MOVE_INCREMENT = 20
 class Paddle(Turtle):
     """ docstring """
 
-    def __init__(self):
+    def __init__(self, start_coords):
         super().__init__()
         self.penup()
         self.shape("square")
         self.shapesize(stretch_len=1, stretch_wid=5)  # starting size = 20, 20
         self.color("white")
-        self.goto(PADDLE_START_POSITION)
+        self.goto(start_coords)
 
     def move_up(self):
         """ Move paddle up """
