@@ -1,10 +1,10 @@
-from game_parameters import limit_vert, limit_paddle_face, limit_paddle_distance
+from game_parameters import limit_vert, limit_horz, limit_paddle_face, limit_paddle_distance
 
 
 # Functions
 def detect_wall_collision(ball_yposition):
     """ Evaluate if the ball hit the top or bottom wall """
-    return abs(ball_yposition) > limit_vert  # or ball_yposition < -limit_vert
+    return abs(ball_yposition) >= limit_vert  # or ball_yposition < -limit_vert
 
 
 def detect_paddle_collision(ball, player1_paddle, player2_paddle):
@@ -18,3 +18,8 @@ def detect_paddle_collision(ball, player1_paddle, player2_paddle):
         return True
     else:
         return False
+
+
+def detect_missed_ball(ball_xposition):
+    """ Evalute is the ball is behind the paddle """
+    return abs(ball_xposition) > limit_horz

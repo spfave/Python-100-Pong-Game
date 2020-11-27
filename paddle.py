@@ -1,4 +1,5 @@
 from turtle import Turtle
+from game_parameters import limit_paddle_position
 
 
 # Constants
@@ -19,8 +20,10 @@ class Paddle(Turtle):
 
     def move_up(self):
         """ Move paddle up """
-        self.sety(self.ycor()+MOVE_INCREMENT)
+        if self.ycor() < limit_paddle_position:
+            self.sety(self.ycor()+MOVE_INCREMENT)
 
     def move_down(self):
         """ Move paddle down """
-        self.sety(self.ycor()-MOVE_INCREMENT)
+        if self.ycor() > -limit_paddle_position:
+            self.sety(self.ycor()-MOVE_INCREMENT)

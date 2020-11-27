@@ -46,5 +46,8 @@ while game_running:
     if ge.detect_paddle_collision(ball, player1_paddle, player2_paddle):
         ball.bounce_paddle()
 
+    if ge.detect_missed_ball(ball.xcor()):
+        ball.reset()
+
 
 screen.exitonclick()

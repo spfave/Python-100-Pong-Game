@@ -32,8 +32,16 @@ class Ball(Turtle):
         self.x_move *= -1
 
     def set_trajectory(self, trajectory=(MOVE_INCREMENT, MOVE_INCREMENT)):
-        """ Set ball trajectory by setting movement increment in x and y direction 
+        """ Set ball trajectory by setting movement increment in x and y direction
             Default ball trajectory at start is up and to the right
         """
         self.x_move = trajectory[0]
         self.y_move = trajectory[1]
+
+    def reset(self):
+        """ Reset ball, serve to scoring player """
+        # x_move_start = -MOVE_INCREMENT if self.xcor() > 0 else MOVE_INCREMENT
+        # y_move_start = choice(YTRAJECTORY_START)
+        self.goto((0, 0))
+        self.bounce_paddle()
+        # self.set_trajectory((x_move_start, y_move_start))
