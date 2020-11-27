@@ -1,0 +1,5 @@
+
+
+# Constants
+WINDOWWIDTH = 800
+WINDOWHEIGHT = 600
