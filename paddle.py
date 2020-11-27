@@ -2,8 +2,6 @@ from turtle import Turtle
 
 
 # Constants
-PADDLE_WIDTH = 20
-PADDLE_HEIGHT = 100
 MOVE_INCREMENT = 20
 
 

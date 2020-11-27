@@ -14,7 +14,7 @@ class Ball(Turtle):
     def __init__(self):
         super().__init__()
         self.penup()
-        self.shape("circle")
+        self.shape("circle")    # Ball size is 20 by 20 default
         self.color("white")
         self.set_trajectory()
 
@@ -26,6 +26,10 @@ class Ball(Turtle):
     def bounce_wall(self):
         """ Bounce ball off wall """
         self.y_move *= -1
+
+    def bounce_paddle(self):
+        """ Bounce ball off paddle """
+        self.x_move *= -1
 
     def set_trajectory(self, trajectory=(MOVE_INCREMENT, MOVE_INCREMENT)):
         """ Set ball trajectory by setting movement increment in x and y direction 

@@ -43,5 +43,8 @@ while game_running:
     if ge.detect_wall_collision(ball.ycor()):
         ball.bounce_wall()
 
+    if ge.detect_paddle_collision(ball, player1_paddle, player2_paddle):
+        ball.bounce_paddle()
+
 
 screen.exitonclick()
