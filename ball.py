@@ -1,22 +1,35 @@
 from turtle import Turtle
+from random import choice
 
 
 # Constants
-MOVE_INCREMENT = 20
+MOVE_INCREMENT = 10
+YTRAJECTORY_START = [-MOVE_INCREMENT, MOVE_INCREMENT]
 
 
 # Classes
 class Ball(Turtle):
     """ Game ball """
 
-    def __init__(self, initial_heading):
+    def __init__(self):
         super().__init__()
         self.penup()
         self.shape("circle")
         self.color("white")
-        self.setheading(initial_heading)
+        self.set_trajectory()
 
     def move(self):
-        self.setx(self.xcor()+MOVE_INCREMENT)
-        self.sety(self.ycor()+MOVE_INCREMENT)
-        # self.forward(MOVE_INCREMENT)
+        """ Move ball along trajectory path """
+        self.setx(self.xcor()+self.x_move)
+        self.sety(self.ycor()+self.y_move)
+
+    def bounce_wall(self):
+        """ Bounce ball off wall """
+        self.y_move *= -1
+
+    def set_trajectory(self, trajectory=(MOVE_INCREMENT, MOVE_INCREMENT)):
+        """ Set ball trajectory by setting movement increment in x and y direction 
+            Default ball trajectory at start is up and to the right
+        """
+        self.x_move = trajectory[0]
+        self.y_move = trajectory[1]
