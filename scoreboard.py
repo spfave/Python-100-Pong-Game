@@ -45,7 +45,7 @@ class Scoreboard(Turtle):
         self.write(f"{self.p2_score.value}",
                    align=TEXT_ALIGNMENT, font=FONT_STYLE)
 
-    def player_point(self, ball_xcor):
+    def player_score(self, ball_xcor):
         if ball_xcor > 0:
             self.p1_score.scored()
         else:

@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, Screen
 from math import sqrt
 
 
@@ -18,6 +18,7 @@ PLAYER2_START_POSITION = (350, 0)
 # Ball size
 BALL_RADIUS = 10
 
+
 # Variables
 limit_horz = WINDOW_WIDTH/2-OFFSET
 limit_vert = WINDOW_HEIGHT/2-OFFSET
@@ -28,6 +29,18 @@ limit_paddle_position = WINDOW_HEIGHT/2-PADDLE_HEIGHT/2
 
 
 # Functions
+def game_screen():
+    """ Create game screen """
+    screen = Screen()
+    screen.setup(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
+    screen.title("Pong Game")
+    screen.bgcolor("black")
+    screen.tracer(0)
+    draw_centerline()
+
+    return screen
+
+
 def draw_centerline():
     t = Turtle()
     t.penup()

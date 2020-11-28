@@ -1,4 +1,3 @@
-from turtle import Screen
 import time
 import game_parameters as gp
 import game_engine as ge
@@ -7,22 +6,9 @@ from ball import Ball
 from scoreboard import Scoreboard
 
 
-# Functions
-def game_screen():
-    """ Create game screen """
-    screen = Screen()
-    screen.setup(width=gp.WINDOW_WIDTH, height=gp.WINDOW_HEIGHT)
-    screen.title("Pong Game")
-    screen.bgcolor("black")
-    screen.tracer(0)
-    gp.draw_centerline()
-
-    return screen
-
-
 # Main --------------------------------------------------------------
 # Game setup
-screen = game_screen()
+screen = gp.game_screen()
 
 player1_paddle = Paddle(start_coords=gp.PLAYER1_START_POSITION)
 player2_paddle = Paddle(start_coords=gp.PLAYER2_START_POSITION)
@@ -39,7 +25,7 @@ screen.onkey(key="Down", fun=player2_paddle.move_down)
 game_running = True
 while game_running:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
 
     ball.move()
 
@@ -50,7 +36,7 @@ while game_running:
         ball.bounce_paddle()
 
     if ge.detect_missed_ball(ball.xcor()):
-        scoreboard.player_point(ball.xcor())
+        scoreboard.player_score(ball.xcor())
         ball.reset()
 
 screen.exitonclick()

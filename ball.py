@@ -4,6 +4,7 @@ from random import randint
 
 # Constants
 MOVE_INCREMENT = 10
+MOVE_INCREASE = 0.8
 
 
 # Classes
@@ -16,6 +17,7 @@ class Ball(Turtle):
         self.shape("circle")    # Ball size is 20 by 20 default
         self.color("white")
         self.set_trajectory()
+        self.reset_ball_speed()
 
     def move(self):
         """ Move ball along trajectory path """
@@ -29,6 +31,8 @@ class Ball(Turtle):
     def bounce_paddle(self):
         """ Bounce ball off paddle """
         self.x_move *= -1
+        # slightly increase ball speed with each successful save
+        self.move_speed *= MOVE_INCREASE
 
     def set_trajectory(self, trajectory=(MOVE_INCREMENT, MOVE_INCREMENT)):
         """ Set ball trajectory by setting movement increment in x and y direction
@@ -43,3 +47,7 @@ class Ball(Turtle):
         self.bounce_paddle()
         if randint(0, 1) == 1:
             self.bounce_wall()
+        self.reset_ball_speed()
+
+    def reset_ball_speed(self):
+        self.move_speed = 0.1
