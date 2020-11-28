@@ -4,6 +4,7 @@ import game_parameters as gp
 import game_engine as ge
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 
 
 # Functions
@@ -14,6 +15,7 @@ def game_screen():
     screen.title("Pong Game")
     screen.bgcolor("black")
     screen.tracer(0)
+    gp.draw_centerline()
 
     return screen
 
@@ -25,6 +27,7 @@ screen = game_screen()
 player1_paddle = Paddle(start_coords=gp.PLAYER1_START_POSITION)
 player2_paddle = Paddle(start_coords=gp.PLAYER2_START_POSITION)
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(key="w", fun=player1_paddle.move_up)
@@ -47,7 +50,7 @@ while game_running:
         ball.bounce_paddle()
 
     if ge.detect_missed_ball(ball.xcor()):
+        scoreboard.player_point(ball.xcor())
         ball.reset()
-
 
 screen.exitonclick()
