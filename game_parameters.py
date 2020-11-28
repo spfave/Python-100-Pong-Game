@@ -18,8 +18,9 @@ PLAYER2_START_POSITION = (350, 0)
 BALL_RADIUS = 10
 
 # Variables
-limit_horz = WINDOW_WIDTH/2
+limit_horz = WINDOW_WIDTH/2-OFFSET
 limit_vert = WINDOW_HEIGHT/2-OFFSET
 limit_paddle_face = PLAYER2_START_POSITION[0]-PADDLE_WIDTH/2-BALL_RADIUS
-limit_paddle_distance = PADDLE_HEIGHT/2
+limit_paddle_distance = sqrt(
+    (PADDLE_HEIGHT/2)**2 + (PADDLE_WIDTH/2+BALL_RADIUS)**2)
 limit_paddle_position = WINDOW_HEIGHT/2-PADDLE_HEIGHT/2
