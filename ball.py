@@ -1,10 +1,9 @@
 from turtle import Turtle
-from random import choice
+from random import randint
 
 
 # Constants
 MOVE_INCREMENT = 10
-YTRAJECTORY_START = [-MOVE_INCREMENT, MOVE_INCREMENT]
 
 
 # Classes
@@ -39,9 +38,8 @@ class Ball(Turtle):
         self.y_move = trajectory[1]
 
     def reset(self):
-        """ Reset ball, serve to scoring player """
-        # x_move_start = -MOVE_INCREMENT if self.xcor() > 0 else MOVE_INCREMENT
-        # y_move_start = choice(YTRAJECTORY_START)
+        """ Reset ball, serve to scoring player, with random up or down trajectory """
         self.goto((0, 0))
         self.bounce_paddle()
-        # self.set_trajectory((x_move_start, y_move_start))
+        if randint(0, 1) == 1:
+            self.bounce_wall()
