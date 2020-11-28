@@ -37,6 +37,8 @@ while game_running:
 
     if ge.detect_missed_ball(ball.xcor()):
         scoreboard.player_score(ball.xcor())
+        if scoreboard.check_winner():
+            game_running = False
         ball.reset()
 
 screen.exitonclick()

@@ -51,3 +51,6 @@ class Scoreboard(Turtle):
         else:
             self.p2_score.scored()
         self.update_score()
+
+    def check_winner(self):
+        return self.p1_score.value == WINNING_TOTAL or self.p2_score.value == WINNING_TOTAL
